@@ -1,0 +1,71 @@
+{% extends "main_template.html" %}
+{% block main %}
+
+
+<div class="container-xl">
+
+    {%if not mission and not table %}
+        <h2 id="missionName"></h2>
+        <div id="missionSource"></div>
+        <div id="missionImg"></div>
+        <div id="missionContent" class="mission content"></div>
+        <div id="terrainMap" class="container-fluid"></div>
+
+    {% elif mission and table %}
+        <h2 id="missionName">{{mission.mission_name|safe}}</h2>
+        <div id="missionSource">Mission source: {{source}}</div>
+        <div id="missionImg">
+            <img class="img-fluid map_img" src="{{ url_for('static', filename='imgs/'+mission.deployment_img) }}" alt=""/>
+        </div>
+        <div id="missionContent" class="mission content">{{mission.mission_desc|safe}}</div>
+        <div id="terrainMap" class="container-fluid">
+            <div class="d-flex flex-row">
+                <div class="p-6">
+                    <img class="terrain_img" src="{{ url_for('static', filename='imgs/tables/'+table.table_img+'.png') }}" alt=""/>
+                </div>
+                <div class="p-6">
+                  <img class="terrain_img" src="{{ url_for('static', filename='imgs/tables/'+table.table_img+'m.png') }}" alt=""/>
+                </div>
+            </div>
+        </div>
+
+
+    {% elif mission %}
+        <h2 id="missionName">{{mission.mission_name|safe}}</h2>
+        <div id="missionSource">Mission source: {{source}}</div>
+        <div id="missionImg">
+            <img class="img-fluid map_img" src="{{ url_for('static', filename='imgs/'+mission.deployment_img) }}" alt=""/>
+        </div>
+        <div id="missionContent" class="mission content">{{mission.mission_desc|safe}}</div>
+        <div id="terrainMap" class="container-fluid">
+        </div>
+
+
+
+    {% endif %}
+    <div class="d-flex flex-row">
+        <div class="p-4">
+            <button id="btnRandomize" type="button" class="btn btn-secondary">Randomize</button>
+        </div>
+        <div class="p-4">
+            <input type="checkbox" class="terrain_checkbox" id="terrainCheck1">
+            <label class="terrain_checkbox_label" for="terrainCheck1" id="terrainCheck1Label">Randomize Terrain</label>
+        </div>
+    </div>
+
+    <p></p>
+    <select id="selectMissionGroup" class="browser-default custom-select">
+        <option value="">All sources</option>
+        {% for id in sel_ids %}
+        <option value="{{ id }}">{{ id }}</option>
+        {% endfor %}
+    </select>
+    <p></p>
+    <select id="selectMissionScale" class="browser-default custom-select">
+        <option selected value="StrikeForce"> Strike Force</option>
+        <option value="CombatPatrol">Combat Patrol</option>
+        <option value="Incursion">Incursion</option>
+    </select>
+
+</div>
+{% endblock main %}
