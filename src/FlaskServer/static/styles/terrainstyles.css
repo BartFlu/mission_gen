@@ -1,0 +1,33 @@
+
+.terrain_img {
+
+	max-height: 400px;
+}
+
+.logo_img {
+	max-height: 100px;
+}
+
+.map_img{
+	width: 50%;
+	max-height: 400px;
+}
+
+.terrain_checkbox{
+	visibility: hidden;
+}
+
+.terrain_checkbox_label{
+	visibility: hidden;
+}
+
+/* for terrain helper: */
+
+.block {
+   width: 100%;
+}
+
+.responsive-img {
+   width: 100%;
+   height: auto;
+}
