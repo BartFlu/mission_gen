@@ -38,7 +38,7 @@ def get_random_scenario():
         Purpose: Random mission choice.
         Request has to contain two keys: scale and group. Source can be empty - in that case method will choose mission
         from all sources.
-        In case of request without any of the keys it return error.
+        In case of request without any of the keys it returns error.
 
         :return: json with mission parameters
     """
